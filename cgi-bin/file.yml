@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+   - copy:
+        src: "hello world"
+        dest: "/root/new5.txt"

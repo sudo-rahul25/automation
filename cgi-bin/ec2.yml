@@ -1,0 +1,17 @@
+- name: ec2 launcher
+  hosts: localhost
+  connection: local
+  tasks:
+   - name: launching ec2
+     ec2:
+      instance_type: t2.micro
+      key_name: batch9thmaykey
+      image: ami-00e782930f1c3dbc7
+      region: ap-south-1
+      group: default
+      count: 1
+      vpc_subnet_id: subnet-75461a1d
+      wait: yes
+      assign_public_ip: yes
+      aws_access_key: AKIAXCJMS6TTMC4ISD66
+      aws_secret_key: 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

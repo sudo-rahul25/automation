@@ -1,0 +1,12 @@
+- hosts: all
+  vars_files:
+   - vars.yml
+  tasks: 
+
+    - name: partition_remove
+      parted:
+         device: "{{ devname }}"
+         number: "{{ partno }}"
+         state: absent
+      tags:
+         - partition_remove

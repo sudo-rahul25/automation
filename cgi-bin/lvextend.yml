@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+  vars_files:
+      - vars.yml
+
+      - name: lvm_extend
+        lvol:
+          vg: "{{ vgname }}"
+          lv: "{{ lvname }}"
+          size: "{{ lvsize }}"
+        tags:
+          - lvm_extend   

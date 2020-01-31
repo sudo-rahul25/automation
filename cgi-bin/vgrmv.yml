@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+
+   - name: vg_remove
+        lvg:
+          vg: "{{ vgname }}"
+          state: absent
+        tags:
+          - vg_remove

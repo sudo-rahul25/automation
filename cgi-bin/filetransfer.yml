@@ -1,0 +1,11 @@
+- hosts: "192.168.43.47"
+  tasks:
+    - fetch:
+        src: "/root/Desktop/hello.txt"
+        dest: "/root/Desktop/ansible_code/"
+        flat: yes
+- hosts: "192.168.43.199"
+  tasks:
+    - copy:
+        src: "/root/Desktop/ansible_code/hello.txt "
+        dest: "/root/Desktop/"

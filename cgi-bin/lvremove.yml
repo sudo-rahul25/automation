@@ -1,0 +1,21 @@
+- hosts: all
+  tasks:
+  vars_files:
+      - vars.yml
+      - name: lvm_unmount
+        mount:
+           name: "{{ mountpoint1 }}"
+           state: unmounted
+        tags:
+           - lvm_unmount
+        
+       
+      - name: lvm_remove
+        lvol:
+          vg: "{{ vgname }}"
+          lv: "{{ lvname }}"
+          state: absent
+          force: yes
+        tags:
+          - lvm_remove
+         

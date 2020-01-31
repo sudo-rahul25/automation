@@ -1,0 +1,47 @@
+- hosts: all
+  vars_files:
+      - vars.yml
+  tasks:
+  
+      - name: partition_create
+        parted:
+          device: "{{ devname }}"
+          number: "{{ partno}}"
+          state: present
+          part_start: "{{ partsize1 }}"
+          part_end: "{{ partsize2 }}"
+        tags:
+          - partition_create
+
+      
+      - name: vg_create
+        lvg:
+          vg: "{{ vgname }}"
+          pvs: "{{ pvname }}"
+        tags:
+          - vg_create
+     
+      - name: lvm_create
+        lvol:
+          vg: "{{ vgname }}"
+          lv: "{{ lvname }}"
+          size: "{{ lvsize }}"
+        tags:
+          - lvm_create
+       
+      - name: lvm_format
+        filesystem:
+            fstype: ext4
+            dev: "/dev/{{ vgname }}/{{ lvname }}"
+        tags:
+            - lvm_format
+      
+      - name: lvm_mount
+        mount:
+          name: "{{ mountpoint1 }}"
+          src: "/dev/{{ vgname }}/{{ lvname }}"
+          state: mounted
+          fstype: ext4
+        tags:
+          - lvm_mount
+       

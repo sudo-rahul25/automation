@@ -1,0 +1,27 @@
+- hosts: all
+  tasks:
+  vars_files:
+      - vars.yml
+  - name: lvm_create
+        lvol:
+          vg: "{{ vgname }}"
+          lv: "{{ lvname }}"
+          size: "{{ lvsize }}"
+        tags:
+          - lvm_create
+       
+      - name: lvm_format
+        filesystem:
+            fstype: ext4
+            dev: "{{ lvm_path }}"
+        tags:
+            - lvm_format
+       
+      - name: lvm_mount
+        mount:
+          name: "{{ mountpoint1 }}"
+          src: "{{ lvm_path }}"
+          state: mounted
+          fstype: ext4
+        tags:
+          - lvm_mount

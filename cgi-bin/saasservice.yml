@@ -1,0 +1,20 @@
+- hosts: localhost
+  tasks:
+    - package:
+        name: "docker-ce"
+        state: present
+    - service:
+        name: "docker"
+        state: started
+        enabled: yes
+    - copy:
+        src: /root/Desktop/ansible_code/firefox_docker.tar
+        dest: /root/Desktop
+    - docker_container:
+       name: firefox1
+       image: firefox_docker.tars 
+       volumes: /tmp/.X11-unix:/tmp/.X11-unix
+       interactive: true
+       tty: yes
+
+

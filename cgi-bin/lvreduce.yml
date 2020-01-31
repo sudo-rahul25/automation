@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+  vars_files:
+      - vars.yml
+      - name: lvm_reduce
+        lvol:
+          vg: "{{ vgname }}"
+          lv: "{{ lvname }}"
+          size: "{{ lvsize }}"
+          force: yes
+        tags:
+          - lvm_reduce   

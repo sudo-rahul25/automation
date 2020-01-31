@@ -1,0 +1,13 @@
+
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  vars_files:
+   - vars.yml
+  tasks:
+   - name: Create a S3 bucket
+     aws_s3:
+      aws_access_key: "AKIAYH24EVVY6YNA2CJG"
+      aws_secret_key: "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"
+      bucket: "{{ bucketname }}"
+      mode: create

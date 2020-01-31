@@ -1,0 +1,35 @@
+- hosts: localhost
+  vars_files:
+       - vars.yml
+  tasks:
+       - package:
+           name: "python-pip"
+           state: present
+       - pip:
+           name: "docker-py"
+           state: present
+       - copy:
+           dest: "/root/Desktop/rhel7_5_software_extras/centos-latest.tar"
+           src: "/root/Desktop/rhel7_5_software_extras/centos-latest.tar"
+       - service:
+           name: docker
+           state: started
+     
+       
+#       - docker_image:
+#            name: "centos"
+#            tag: "latest"
+#            push: yes
+#            state: present
+       - name: container
+         docker_container:
+            name: "{{ name }}"
+            image: "centos"
+            state: started
+            interactive: true
+            tty: true
+         #environment:
+           # PYTHONPATH: "/usr/lib/python2.7/site-packages"
+       
+     
+

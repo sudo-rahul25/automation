@@ -1,0 +1,14 @@
+- hosts: localhost
+  vars_files:
+   - vars.yml 
+  tasks:
+   - twilio:
+         msg: "hellooooooooooo"
+         account_sid: AC87af36a2584538f476e9410b943b4b1a
+         auth_token: 12edc49253526cd07a19c503dfda5ddf
+         from_number: +16572152460
+         to_number:
+           - +918340552112
+
+      
+

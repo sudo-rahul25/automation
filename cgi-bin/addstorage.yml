@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+  - ec2_vol:
+     aws_access_key: AKIAXCJMS6TTMC4ISD66
+     aws_secret_key: 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
+     instance: i-0b2709ba2cfa02ec9
+     region: ap-south-1
+     volume_size: 5
+     volume_type: gp2
+     device_name: sdd
+

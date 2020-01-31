@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - cron:
+     name: hello
+     user: root
+     job: /usr/bin/date  > /dev/pts/0
+     state: present
+     
