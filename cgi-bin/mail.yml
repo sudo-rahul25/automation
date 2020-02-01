@@ -7,7 +7,7 @@
         host: smtp.gmail.com
         port: 587
         username: manojsingh197121@gmail.com
-        password: manojkumar01
+        password: 
         to: "{{ mail }}"
         subject: Ansible-report
         body: "{{ body }}"
